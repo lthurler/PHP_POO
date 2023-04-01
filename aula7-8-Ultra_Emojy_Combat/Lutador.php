@@ -13,6 +13,19 @@ class Lutador
     private $empates;
 
 
+    function __construct($nome,$nacionalidade,$idade,$altura,$peso,$vitorias,$derrotas,$empates)
+    {
+        $this->setNome($nome);
+        $this->setNacionalidade($nacionalidade);
+        $this->setIdade($idade);
+        $this->setAltura($altura);
+        $this->setPeso($peso);
+        $this->setVitorias($vitorias);
+        $this->setDerrotas($derrotas);
+        $this->setEmpates($empates); 
+    }
+
+
     public function getNome()
     {
         return $this->nome;
@@ -65,7 +78,7 @@ class Lutador
     public function setPeso($peso)
     {
         $this->peso = $peso;
-        return $this;
+        $this->setCategoria();
     }
      
     public function getCategoria()
@@ -73,7 +86,7 @@ class Lutador
         return $this->categoria;
     }
      
-    public function setCategoria($categoria)
+    private function setCategoria()
     {
        if ($this->peso < 52.2)
        {
@@ -133,17 +146,17 @@ class Lutador
 
     function apresentar()
     {
-        echo "<p>---------------------------</p>";
+        echo "<p>--------------------------------------------------------------</p>";
         echo "<p>CHEGOU A HORA!! O lutador " . $this->getNome();
-        echo "veio diretamente de " . $this->getNacionalidade();
-        echo "tem " . $this->getIdade() . "anos e pesa " . $this->getPeso() ."kg";
-        echo "<br>Ele tem " . $this->getVitorias() . " vitórias";
+        echo " veio diretamente de " . $this->getNacionalidade();
+        echo " tem " . $this->getIdade() . "anos e pesa " . $this->getPeso() ."kg";
+        echo "<br>Ele tem " . $this->getVitorias() . " vitórias ";
         echo $this->getDerrotas() . " derrotas e " . $this->getEmpates() . " empates</p>";
     }
 
     function status()
     {
-        echo "<p>----------------------------</p>";
+        echo "<p>--------------------------------------------------------------</p>";
         echo "<p>" . $this->getNome() . " é um peso " . $this->getCategoria();
         echo " e já ganhou " . $this->getVitorias() . " vezes,";
         echo " perdeu " . $this->getDerrotas() . " vezes e ";
